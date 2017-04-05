@@ -1,5 +1,5 @@
 /**
- * @(#)CombinationSum.java, 四月 05, 2017.
+ * @(#)CombinationSumII.java, 四月 05, 2017.
  * <p>
  * Copyright 2017 fenbi.com. All rights reserved.
  * FENBI.COM PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * @author zhangpeng
  */
-public class CombinationSum {
+public class CombinationSum2 {
 
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         Arrays.sort(candidates);
@@ -30,8 +30,9 @@ public class CombinationSum {
             result.add(new ArrayList<Integer>(tempList));
         } else {
             for (int i = start; i < candidates.length; i++) {
+                if (i > start && candidates[i] == candidates[i-1]) continue;// 区别
                 tempList.add(candidates[i]);
-                backtrack(result, candidates, tempList, remain - candidates[i], i);
+                backtrack(result, candidates, tempList, remain - candidates[i], i + 1);//i i+1 与 CombinationSum的区别
                 tempList.remove(tempList.size() - 1);
             }
         }

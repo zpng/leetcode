@@ -27,6 +27,7 @@ public class UniquePaths {
         return dp[0][0];
     }
 
+    //long 的版本,防止溢出
     public long uniquePaths2(int m, int n) {
 
         long[][] dp = new long[m][n];
@@ -44,6 +45,7 @@ public class UniquePaths {
         return dp[0][0];
     }
 
+    //公式法
     public int uniquePaths3(int m, int n) {
         int N = n + m - 2;// how much steps we need to do
         int k = m - 1; // number of steps that need to go down
